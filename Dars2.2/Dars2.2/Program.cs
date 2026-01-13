@@ -1,30 +1,64 @@
-﻿namespace Dars2._2;
+﻿using Dars2._2.Models;
+using Dars2._2.Services;
+
+namespace Dars2._2;
 
 internal class Program
 {
     static List<Book> Books = new List<Book>();
     static void Main(string[] args)
     {
-        DataSeed();
+        Car car1 = new Car()
+        {
+            Model = "Lexus",
+            Color = "DarkBlue",
+            Price = 300000,
+            FuelType = "Gasoline",
+            RelaiseYear = DateTime.Now,
+            IsNew = true
+        };
+        CarService carService = new CarService();
+        carService.AddCar(car1);
+
+
+        School school1 = new School()
+        {
+            Number = 144,
+            Capacity = 1000,
+            CurrentStudents = 880,
+            Location = "Muqimiy street",
+            IsFree = true,
+            Language = "Uzbek"
+        };
+        SchoolService schoolService = new SchoolService();
+        schoolService.AddSchool(school1);
+
+
+
+
+
+
+        //DataSeed();
 
         //var books = GetExpensiveBooksThenMinPrice(5);
-        Console.WriteLine(GetTheMaxPageBook());
-
-
-
+        //Console.WriteLine(GetTheMaxPageBook());
         //var book = GetMaxPricedBook();
         //Console.WriteLine(book.Price);
 
     }
     static List<Book> GetTwoTheMaxPageBook()
     {
-        var book1 = new List<Book>();
-        var book2 = new List<Book>();
-        var book3 = Books;
-        foreach (var b in book3)
+        var firstbook = GetTheMaxPageBook();
+        Book book = Books[0];
+        foreach (var b in Books)
         {
-            
+            if (b.PageCount < book.PageCount && b.PageCount < book.PageCount)
+            {
+                book = b;
+            }
         }
+        return new List<Book> { firstbook, book };
+
     }
 
     static Book GetTheMaxPageBook()
@@ -32,7 +66,7 @@ internal class Program
         var book = Books[0];
         foreach (var b in Books)
         {
-            if(b.PageCount < book.PageCount)
+            if (b.PageCount < book.PageCount)
             {
                 book = b;
             }
