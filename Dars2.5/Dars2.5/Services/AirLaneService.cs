@@ -46,7 +46,7 @@ public class AirLaneService : IAirLaneService
 
     public void UpdateAirLane(Guid airLineId, AirLane newAirLane)
     {
-        for(var i = 0; i < AirLanes.Count; i++)
+        for (var i = 0; i < AirLanes.Count; i++)
         {
             if (AirLanes[i].AirLaneId == airLineId)
             {

@@ -44,7 +44,23 @@ internal class Program
             To = "Sicilia",
             PricePerFlight = 300
         };
-        airLaneService.AddAirLane(airLane1);
+        var airLane2 = new AirLane()
+        {
+            Model = "Amg",
+            From = "Uzb",
+            To = "Rus",
+            PricePerFlight = 200
+        };
+        airLaneService.AddAirLane(airLane2);
+        airLaneService.UpdateAirLane(airLane1.AirLaneId, airLane2);
+        var arg = airLaneService.GetAllAirLanes();
+        foreach (var a in arg)
+        {
+            Console.WriteLine(a.From);
+            Console.WriteLine(a.Model);
+            Console.WriteLine(a.PricePerFlight);
+            Console.WriteLine(a.To);
+        }
         //--------------------------------------------------------------------------
         IBlackBoardService blackBoardService = new BlackBoardService();
         BlackBoard blackBoard1 = new BlackBoard()
