@@ -7,12 +7,18 @@ public class Program
 {
     static void Main(string[] args)
     {
-        INotificationService notification = new EmailService();
-        INotificationService notification1 = new TeamsService();
-        INotificationService notification2 = new AccountService();
+        
+        Notification notification1 = new Notification();
+        INotificationService notificationService = GetSocialMedia();
 
-        notification.SendNotification();
-        notification1.SendNotification();
-        notification2.SendNotification();
+
+        
+    }
+    public static INotificationService GetSocialMedia()
+    {
+        //INotificationService notification = new EmailService();
+        //INotificationService notification = new TeamsService();
+        INotificationService notification = new   AccountService();
+        return notification;
     }
 }
